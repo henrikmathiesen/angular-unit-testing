@@ -10,10 +10,10 @@
     "serve": "http-server -p 1337",
     "delete-build-files": "del-cli bld/*",
     "uglifyjs-app-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs-app",
-    "uglifyjs-lib": "uglifyjs node_modules/angular/angular.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources",
+    "uglifyjs-lib": "uglifyjs node_modules/angular/angular.js node_modules/jquery/dist/jquery.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources",
     "uglifyjs-app": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
     "": "================================================================================================================================================================",
-    "uglifyjs-lib-prod": "uglifyjs node_modules/angular/angular.min.js -o bld/lib.js",
+    "uglifyjs-lib-prod": "uglifyjs node_modules/angular/angular.min.js node_modules/jquery/dist/jquery.min.js -o bld/lib.js",
     "uglifyjs-app-prod": "uglifyjs app/js/*.js -o bld/app.js"
   },
   "repository": {
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
-    "angular-mocks": "^1.5.8"
+    "angular-mocks": "^1.5.8",
+    "jquery": "^3.1.1"
   }
 }
