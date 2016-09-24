@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js",
-    "start": "npm run uglifyjs && concurrently \"npm run uglifyjs-watch\" \"npm run serve\"",
+    "start": "npm run uglifyjs-lib && npm run uglifyjs-app && concurrently \"npm run uglifyjs-app-watch\" \"npm run serve\"",
     "serve": "http-server -p 1337",
-    "uglifyjs-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs",
-    "uglifyjs": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
+    "uglifyjs-app-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs-app",
+    "uglifyjs-app": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
+    "uglifyjs-lib": "uglifyjs node_modules/angular/angular.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources --comments",
     "delete-map-files": "del-cli bld/*.map"
   },
   "repository": {
