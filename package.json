@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start karma.conf.js",
     "start": "npm run uglifyjs-lib && npm run uglifyjs-app && concurrently \"npm run uglifyjs-app-watch\" \"npm run serve\"",
-    "prod": "npm run uglifyjs-lib-prod && npm run uglifyjs-app-prod",
+    "prod": "npm run delete-build-files && npm run uglifyjs-lib-prod && npm run uglifyjs-app-prod",
     "serve": "http-server -p 1337",
     "delete-build-files": "del-cli bld/*",
     "uglifyjs-app-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs-app",
