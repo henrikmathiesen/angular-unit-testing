@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run uglifyjs && concurrently \"npm run uglifyjs-watch\" \"npm run serve\"",
+    "serve": "http-server -p 1337",
     "uglifyjs-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs",
     "uglifyjs": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
-    "serve": "http-server -p 1337",
     "delete-map-files": "del-cli bld/*.map"
   },
   "repository": {
