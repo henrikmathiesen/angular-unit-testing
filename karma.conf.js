@@ -3,7 +3,8 @@ module.exports = function (config) {
         browsers: ['PhantomJS'],
         frameworks: ['jasmine'],
         files: [
-            './bld/lib.js'
+            './bld/lib.js',
+            'node_modules/angular-mocks/angular-mocks.js',
             './tst/**/*.js'
         ],
         logLevel: config.LOG_DISABLE,
