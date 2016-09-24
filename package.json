@@ -4,6 +4,7 @@
   "description": "Do it til you love it. Following along: https://www.pluralsight.com/courses/angularjs-ngmock-unit-testing",
   "main": "index.js",
   "scripts": {
+    "test": "karma start karma.conf.js",
     "start": "npm run uglifyjs && concurrently \"npm run uglifyjs-watch\" \"npm run serve\"",
     "serve": "http-server -p 1337",
     "uglifyjs-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs",
@@ -24,6 +25,11 @@
     "concurrently": "^2.2.0",
     "del-cli": "^0.2.0",
     "http-server": "^0.9.0",
+    "jasmine": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2",
     "onchange": "^3.0.2",
     "uglify-js": "^2.7.3"
   }
