@@ -6,11 +6,15 @@
   "scripts": {
     "test": "karma start karma.conf.js",
     "start": "npm run uglifyjs-lib && npm run uglifyjs-app && concurrently \"npm run uglifyjs-app-watch\" \"npm run serve\"",
+    "prod": "npm run uglifyjs-lib-prod && npm run uglifyjs-app-prod",
     "serve": "http-server -p 1337",
+    "delete-build-files": "del-cli bld/*",
     "uglifyjs-app-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs-app",
+    "uglifyjs-lib": "uglifyjs node_modules/angular/angular.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources",
     "uglifyjs-app": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
-    "uglifyjs-lib": "uglifyjs node_modules/angular/angular.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources --comments",
-    "delete-map-files": "del-cli bld/*.map"
+    "": "================================================================================================================================================================",
+    "uglifyjs-lib-prod": "uglifyjs node_modules/angular/angular.min.js -o bld/lib.js",
+    "uglifyjs-app-prod": "uglifyjs app/js/*.js -o bld/app.js"
   },
   "repository": {
     "type": "git",
