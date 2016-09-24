@@ -3,6 +3,7 @@ module.exports = function (config) {
         browsers: ['PhantomJS'],
         frameworks: ['jasmine'],
         files: [
+            './bld/lib.js'
             './tst/**/*.js'
         ],
         logLevel: config.LOG_DISABLE,
