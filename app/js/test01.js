@@ -1,6 +1,6 @@
 console.log("Hi from test 01 js");
 
-var test = "fooo!!";
+var test = "fooo!!!!!!!!!!!!";
 
 console.log(test);
 

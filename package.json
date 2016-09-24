@@ -4,9 +4,11 @@
   "description": "Do it til you love it. Following along: https://www.pluralsight.com/courses/angularjs-ngmock-unit-testing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run uglifyjs && concurrently \"npm run uglifyjs-watch\" \"npm run serve\"",
+    "uglifyjs-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs",
     "uglifyjs": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
-    "serve": "http-server -p 1337"
+    "serve": "http-server -p 1337",
+    "delete-map-files": "del-cli bld/*.map"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,10 @@
   },
   "homepage": "https://github.com/henrikmathiesen/angularUnitTesting#readme",
   "devDependencies": {
+    "concurrently": "^2.2.0",
+    "del-cli": "^0.2.0",
     "http-server": "^0.9.0",
+    "onchange": "^3.0.2",
     "uglify-js": "^2.7.3"
   }
 }
