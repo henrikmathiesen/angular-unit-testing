@@ -52,6 +52,7 @@
   },
   "homepage": "https://github.com/henrikmathiesen/angularUnitTesting#readme",
   "devDependencies": {
+    "autoprefixer": "^6.4.1",
     "concurrently": "^2.2.0",
     "del-cli": "^0.2.0",
     "eslint": "^3.6.0",
@@ -61,7 +62,10 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.2",
+    "less": "^2.7.1",
+    "less-plugin-clean-css": "^1.5.1",
     "onchange": "^3.0.2",
+    "postcss-cli": "^2.6.0",
     "typings": "^1.4.0",
     "uglify-js": "^2.7.3"
   },
