@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js",
-    "start": "npm run uglifyjs-lib && npm run uglifyjs-app && concurrently \"npm run uglifyjs-app-watch\" \"npm run serve\"",
+    "start": "npm run uglifyjs-lib && npm run eslint && npm run uglifyjs-app && concurrently \"npm run eslint-watch\" \"npm run uglifyjs-app-watch\" \"npm run serve\"",
     "prod": "npm run delete-build-files && npm run uglifyjs-lib-prod && npm run uglifyjs-app-prod",
     "serve": "http-server -p 1337",
     "delete-build-files": "del-cli bld/*",
-    "uglifyjs-app-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs-app",
     "uglifyjs-lib": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/angular/angular.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources",
     "uglifyjs-app": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
+    "uglifyjs-app-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs-app",
+    "eslint": "eslint app/js/**/*.js",
+    "eslint-watch": "onchange \"app/js/**/*.js\" -- npm run eslint",
     "": "================================================================================================================================================================",
     "uglifyjs-lib-prod": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/angular/angular.js -o bld/lib.js -c -m --comments",
     "uglifyjs-app-prod": "uglifyjs app/js/*.js -o bld/app.js"
