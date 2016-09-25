@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run copy-fonts",
-    "test": "karma start karma.conf.js",
+    "test": "npm run uglifyjs-app && karma start karma.conf.js",
     "start": "npm run uglifyjs-lib && npm run eslint && npm run uglifyjs-app && npm run less-app-lib && concurrently \"npm run eslint-watch\" \"npm run uglifyjs-app-watch\" \"npm run watch-less-app\" \"npm run serve\"",
     "prod": "npm run delete-build-files && npm run uglifyjs-lib-prod && npm run uglifyjs-app-prod && npm run less-prod",
     "serve": "http-server -p 1337",
