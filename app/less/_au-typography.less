@@ -1,0 +1,42 @@
+body {
+    color: @au-color-almost-white;
+    font-family: @oo-font-serif;
+}
+
+h1, h2, h3 {
+    color: @au-color-orange;
+    font-family: @oo-font-sans;
+}
+
+h1 {
+    margin-top: 0;
+
+    @media only screen and (min-width:@au-ipad-landscape-width) {
+        font-size: 80px;
+        margin-bottom: @au-gutter-lg;
+    }
+}
+
+a, a:visited, a:hover, a:active { 
+    color: @au-color-almost-white;
+    text-decoration: underline;
+    position: relative;
+}
+
+a:active {
+    top: 1px;
+}
+
+li + li, ul + li {
+    margin-top: @au-gutter-md;
+}
+
+ul {
+    ul {
+        margin-top: @au-gutter-xs;
+
+        li + li {
+            margin-top: @au-gutter-xs;
+        }
+    }
+}
