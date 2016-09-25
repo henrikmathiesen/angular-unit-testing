@@ -9,7 +9,7 @@
     "start": "npm run uglifyjs-lib && npm run eslint && npm run uglifyjs-app && npm run less-app-lib && concurrently \"npm run eslint-watch\" \"npm run uglifyjs-app-watch\" \"npm run watch-less-app\" \"npm run serve\"",
     "prod": "npm run delete-build-files && npm run uglifyjs-lib-prod && npm run uglifyjs-app-prod && npm run less-prod",
     "serve": "http-server -p 1337",
-    "delete-build-files": "del-cli bld/*",
+    "delete-build-files": "del-cli bld/*.css bld/*.js bld/*.map",
     "copy-fonts": "copyfiles -u 1 \"node_modules/font-awesome/fonts/**/*\" bld",
     "uglifyjs-lib": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/angular/angular.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources",
     "uglifyjs-app": "uglifyjs app/js/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
