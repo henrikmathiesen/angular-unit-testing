@@ -1,4 +1,26 @@
-@import "../../node_modules/normalize.less/normalize.less";
+@lib-base-url: '../../node_modules';
+
+// Vendor variables
+@import '@{lib-base-url}/font-awesome/less/variables.less';
+
+// Override vendor variables + app settings 
 @import '_au-settings.less';
+
+// Vendor
+@import "@{lib-base-url}/normalize.less/normalize.less";
+@import '@{lib-base-url}/font-awesome/less/mixins.less';
+@import '@{lib-base-url}/font-awesome/less/path.less';
+@import '@{lib-base-url}/font-awesome/less/core.less';
+@import '@{lib-base-url}/font-awesome/less/larger.less';
+@import '@{lib-base-url}/font-awesome/less/fixed-width.less';
+@import '@{lib-base-url}/font-awesome/less/list.less';
+@import '@{lib-base-url}/font-awesome/less/bordered-pulled.less';
+@import '@{lib-base-url}/font-awesome/less/animated.less';
+@import '@{lib-base-url}/font-awesome/less/rotated-flipped.less';
+@import '@{lib-base-url}/font-awesome/less/stacked.less';
+@import '@{lib-base-url}/font-awesome/less/icons.less';
+
+// App
 @import '_au-grid.less';
 @import '_au-typography.less';
+@import '_au-icons.less';
