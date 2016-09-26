@@ -13,7 +13,6 @@ angular
 
         factory.search = function (query) {
             return $http.get(baseUrl + 's=' + query);
-
         }
 
         factory.find = function (id) {
