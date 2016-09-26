@@ -5,11 +5,26 @@ angular
     .controller('testController', function (omdbApi) {
         var vm = this;
 
+        var getMoreInfoOnFirstHit = function (id) {
+            omdbApi.find(id)
+                .then(function(response){
+                    console.log(response);
+                })
+                .catch(function(){
+                    console.error("ERROR: find movie");    
+                });
+        }
+
         omdbApi.search('star wars')
-            .then(function(data){
-                console.log(data);
+            .then(function (response) {
+                if(!response.data.Error) {
+                    getMoreInfoOnFirstHit(response.data.Search[0].imdbID);
+                }
+                else {
+                    console.log("no hits");
+                }
             })
-            .catch(function(){
+            .catch(function () {
                 console.error("ERROR: search movie");
             });
     });
