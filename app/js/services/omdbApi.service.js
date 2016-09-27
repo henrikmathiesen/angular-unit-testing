@@ -8,6 +8,7 @@ angular
         var baseUrl = 'http://www.omdbapi.com/?'
 
         factory.search = function (query) {
+            // teacher does this encodeURIComponent(query);
             return $http.get(baseUrl + 's=' + query);
         }
 

@@ -11,7 +11,7 @@ angular
                     console.log(response);
                 })
                 .catch(function(){
-                    console.error("ERROR: find movie");    
+                    console.error("ERROR: find movie");
                 });
         }
 
