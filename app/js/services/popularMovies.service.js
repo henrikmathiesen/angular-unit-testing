@@ -2,16 +2,10 @@
 
 angular
     .module('movie-app')
-    .factory('popularMovies', function ($resource) {
-        var factory = {};
-
-        factory.update = function(){
-            return $resource('popular/:id', { id: '@id' }, {
-                update: {
-                    method: 'PUT'
-                }
-            });
-        };
-
-        return factory;
+    .factory('PopularMovies', function ($resource) {
+        return $resource('popular/:id', { id: '@id' }, {
+            update: {
+                method: 'PUT'
+            }
+        });
     });

@@ -59,6 +59,7 @@ describe("omdb service", function () {
     });
 
     it("should return movie data by id", function () {
+
         //expect(omdbApi.find('tt0076759')).toEqual(movieDataById);
 
         // angular.mock.dump gives more nicely formated json object in console
