@@ -5,7 +5,7 @@ angular
     .factory('PopularMovies', function ($resource) {
         return $resource('popular/:id', { id: '@id' }, {
             update: {
-                method: 'POST'
+                method: 'PUT'
             }
         });
     });

@@ -19,7 +19,7 @@ describe("popularMovies service test", function () {
         $httpBackend.verifyNoOutstandingExpectation();
     });
 
-    it("should create a popular movie", function () {
+    it("should create a popular movie via POST", function () {
 
         var expectedData = function (data) {
             console.log(angular.mock.dump(data));
@@ -39,6 +39,25 @@ describe("popularMovies service test", function () {
         });
 
         popularMovie.$save();
+
+        expect($httpBackend.flush).not.toThrow();
+    });
+
+    it("should use our custom method to do a PUT", function(){
+        var expectedData = function (data) {
+            console.log(angular.mock.dump(data));
+            return true;
+        };
+
+        $httpBackend.when('PUT', 'popular/tt0076759', expectedData)
+            .respond(201);
+
+        var popularMovie = new PopularMovies({
+            id: 'tt0076759',
+            description: 'Great movie again!'
+        });
+
+        popularMovie.$update(); 
 
         expect($httpBackend.flush).not.toThrow();
     });
