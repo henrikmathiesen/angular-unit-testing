@@ -26,7 +26,11 @@ describe("popularMovies service test", function () {
             return true;
         };
 
-        $httpBackend.expectPOST('popular/tt0076759', expectedData)
+        // can also type it like this
+        // $httpBackend.expectPOST('popular/tt0076759', expectedData)
+        //     .respond(201);
+
+        $httpBackend.when('POST', 'popular/tt0076759', expectedData)
             .respond(201);
 
         var popularMovie = new PopularMovies({
