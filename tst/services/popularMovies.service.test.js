@@ -40,3 +40,8 @@ describe("popularMovies service test", function () {
     });
 
 });
+
+// I think this is how it works
+// $httpBackend.flush is needed to get the data out from the promise
+// With flush(), we also need $httpBackend.verifyNoOutstandingExpectation()
+// in omdb service test we dont need those calls

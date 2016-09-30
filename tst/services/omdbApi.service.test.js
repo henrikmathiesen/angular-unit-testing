@@ -1,6 +1,6 @@
 /// <reference path="../../typings/index.d.ts" />
 
-describe("omdb service", function () {
+describe("omdb service test", function () {
 
     // http://www.omdbapi.com/?s=star+wars&y=&plot=short&r=json
 
