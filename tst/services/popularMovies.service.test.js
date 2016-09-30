@@ -80,7 +80,7 @@ describe("popularMovies service test", function () {
 // I think this is how it works
 // $httpBackend.flush is needed to get the data out from the promise
 // With flush(), we also need $httpBackend.verifyNoOutstandingExpectation()
-// in omdb service test we dont need those calls
+// in omdb service test we dont need those calls, because we dont get the data out of the promise in the same way
 
 // $httpBackend.when vs $httpBackend.expect
 // when:    best for working with data, use in any order, reuse allowed
