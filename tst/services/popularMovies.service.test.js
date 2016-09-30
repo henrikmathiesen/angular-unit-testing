@@ -21,11 +21,13 @@ describe("popularMovies service test", function () {
 
     it("should create a popular movie via POST", function () {
 
-        var expectedData = function (postData) {
-            console.log(angular.mock.dump(postData));
-            //return (JSON.parse(postData).id) === 'tt0076759'; , see bellow for Angulars api doing the same thing
-            return (angular.fromJson(postData).id) === 'tt0076759';     // if this does not equal true then the test will fail
-        };
+        // var expectedData = function (postData) {
+        //     console.log(angular.mock.dump(postData));
+        //     //return (JSON.parse(postData).id) === 'tt0076759'; , see bellow for Angulars api doing the same thing
+        //     return (angular.fromJson(postData).id) === 'tt0076759';          // if this does not equal true then the test will fail
+        // };
+
+        var expectedData = '{"id":"tt0076759","description":"Great movie!"}';   // if this does not exactly match post data, then test fails
 
         // can also type it like this
         // $httpBackend.expectPOST('popular/tt0076759', expectedData)
