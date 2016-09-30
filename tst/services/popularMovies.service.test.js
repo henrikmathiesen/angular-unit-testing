@@ -21,9 +21,10 @@ describe("popularMovies service test", function () {
 
     it("should create a popular movie via POST", function () {
 
-        var expectedData = function (data) {
-            console.log(angular.mock.dump(data));
-            return true;
+        var expectedData = function (postData) {
+            console.log(angular.mock.dump(postData));
+            //return (JSON.parse(postData).id) === 'tt0076759'; , see bellow for Angulars api doing the same thing
+            return (angular.fromJson(postData).id) === 'tt0076759';     // if this does not equal true then the test will fail
         };
 
         // can also type it like this
@@ -44,8 +45,8 @@ describe("popularMovies service test", function () {
     });
 
     it("should use our custom method to do a PUT", function(){
-        var expectedData = function (data) {
-            console.log(angular.mock.dump(data));
+        var expectedData = function (postData) {
+            console.log(angular.mock.dump(postData));
             return true;
         };
 
