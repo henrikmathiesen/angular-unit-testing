@@ -27,10 +27,10 @@ describe("popularMovies service test", function () {
         //     return (angular.fromJson(postData).id) === 'tt0076759';          // if this does not equal true then the test will fail
         // };
 
-        var expectedData = '{"id":"tt0076759","description":"Great movie!"}';   // if this does not exactly match post data, then test fails
+        var expectedData = '{"id":"tt0076759","description":"Great movie!"}';   // if this does not exactly match post data, then test fails, as an extra test
 
         // can also type it like this
-        // $httpBackend.expectPOST('popular/tt0076759', expectedData)
+        // $httpBackend.whenPOST('popular/tt0076759', expectedData)
         //     .respond(201);
 
         $httpBackend.when('POST', 'popular/tt0076759', expectedData)
@@ -46,23 +46,33 @@ describe("popularMovies service test", function () {
         expect($httpBackend.flush).not.toThrow();
     });
 
-    it("should use our custom method to do a PUT", function(){
+    it("should use our custom method to do a PUT", function () {
         var expectedData = function (postData) {
             console.log(angular.mock.dump(postData));
             return true;
         };
 
         $httpBackend.when('PUT', 'popular/tt0076759', expectedData)
-            .respond(201);
+            .respond(200);
 
         var popularMovie = new PopularMovies({
             id: 'tt0076759',
             description: 'Great movie again!'
         });
 
-        popularMovie.$update(); 
+        popularMovie.$update();
 
         expect($httpBackend.flush).not.toThrow();
+    });
+
+    it("should get popular movie by id", function () {                          // We could have used the url as a string as second argument
+        $httpBackend.when('GET', function (url) {
+            console.log("GET URL: " + url);                                     // With a callback function like this, we can log the url
+            return url === 'popular/tt0076759';                                 // Again, this must return true, else test fails 
+        }).respond(200);
+
+        // OBS: static method for GET, also no $ prefix
+        PopularMovies.get({ id: 'tt0076759' });
     });
 
 });
@@ -71,3 +81,7 @@ describe("popularMovies service test", function () {
 // $httpBackend.flush is needed to get the data out from the promise
 // With flush(), we also need $httpBackend.verifyNoOutstandingExpectation()
 // in omdb service test we dont need those calls
+
+// $httpBackend.when vs $httpBackend.expect
+// when:    best for working with data, use in any order, reuse allowed
+// expect:  best for testing exact usage of an api, orders matter, reuse not allowed, if any request wasnt made then test fails
