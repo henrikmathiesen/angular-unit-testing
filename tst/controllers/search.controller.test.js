@@ -12,12 +12,12 @@ describe("search controller test", function () {
         $location = _$location_;
         $controller = _$controller_;
 
-        searchCtrl = $controller('searchController', { $location: $location });
+        searchCtrl = $controller('searchController', { $location: $location });             // A) can set bindings here , { query: '...' }
 
     }));
 
     it("should redirect to the search result page for a non empty query", function () {
-        searchCtrl.query = 'star wars';
+        searchCtrl.query = 'star wars';                                                     // B) instead of here, if we wish
         searchCtrl.search();
         expect($location.url()).toBe('/results?q=star%20wars');
     });
