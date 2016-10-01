@@ -5,6 +5,8 @@ angular
     .controller('testController', function (omdbApi) {
         var testCtrl = this;
 
+        testCtrl.foo = "Bar";
+
         var getMoreInfoOnFirstHit = function (id) {
             omdbApi.find(id)
                 .then(function(response){
