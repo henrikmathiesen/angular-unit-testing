@@ -16,7 +16,8 @@ describe("popularMovies service test", function () {
         // Verifies that all of the requests defined via the expect api were made. If any of the requests were not made, 
         // verifyNoOutstandingExpectation throws an exception.
 
-        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingExpectation();  // verify all calls have been made(?)
+        $httpBackend.verifyNoOutstandingRequest();      // verify no non flushed requests
     });
 
     it("should create a popular movie via POST", function () {
@@ -65,14 +66,16 @@ describe("popularMovies service test", function () {
         expect($httpBackend.flush).not.toThrow();
     });
 
-    it("should get popular movie by id", function () {                          // We could have used the url as a string as second argument
-        $httpBackend.when('GET', function (url) {
+    it("should get popular movie by id", function () {
+        $httpBackend.when('GET', function (url) {                               // We could have used the url as a string as second argument
             console.log("GET URL: " + url);                                     // With a callback function like this, we can log the url
             return url === 'popular/tt0076759';                                 // Again, this must return true, else test fails 
         }).respond(200);
 
         // OBS: static method for GET, also no $ prefix
         PopularMovies.get({ id: 'tt0076759' });
+
+        expect($httpBackend.flush).not.toThrow();
     });
 
 });
