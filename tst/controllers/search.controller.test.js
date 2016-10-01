@@ -6,20 +6,13 @@ describe("search controller test", function () {
     var $controller;
     var searchCtrl;
 
+    beforeEach(module('movie-app'));
+
     beforeEach(inject(function (_$controller_, _$location_) {
         $location = _$location_;
         $controller = _$controller_;
 
-        searchCtrl = $controller(function () {
-            var searchCtrl = this;
-
-            searchCtrl.search = function () {
-                if (searchCtrl.query) {
-                    $location.path('/results').search('q', searchCtrl.query);
-                }
-            };
-
-        }, { $location: $location });
+        searchCtrl = $controller('searchController', { $location: $location });
 
     }));
 
