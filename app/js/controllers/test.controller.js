@@ -3,7 +3,7 @@
 angular
     .module('movie-app')
     .controller('testController', function (omdbApi) {
-        var vm = this;
+        var testCtrl = this;
 
         var getMoreInfoOnFirstHit = function (id) {
             omdbApi.find(id)
