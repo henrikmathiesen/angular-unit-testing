@@ -23,7 +23,7 @@ describe("test controller test", function () {
         spyOn(omdbApi, 'search').and.callFake(function () {
             // We cant do this since factory do not actually resolve the promise
             // var deferred = $q.defer();
-            // deferred.resolve(data);
+            // deferred.resolve("ajax call resolved");
             // return deferred.promise;
 
             // The promise is resolved in the controller, so we return just the promise from here
