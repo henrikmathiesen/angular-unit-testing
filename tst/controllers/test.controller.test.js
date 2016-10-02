@@ -27,6 +27,7 @@ describe("test controller test", function () {
             // return deferred.promise;
 
             // The promise is resolved in the controller, so we return just the promise from here
+            // Its not enough to use callFake, it MUST match the implementation of the real method
             return $q.defer().promise;
         });
 
