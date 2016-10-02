@@ -1,3 +1,3 @@
 /// <reference path="../../typings/index.d.ts" />
 
-angular.module('movie-app', ['ngResource']);
+angular.module('movie-app', ['ngResource', 'ui.bootstrap']);
