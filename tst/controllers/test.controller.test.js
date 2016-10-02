@@ -2,21 +2,13 @@
 
 describe("test controller test", function () {
 
-    var $scope;
-    var $compile;
-    var element;
-    var jQelement;
     var testCtrl;
-    var html;
     var omdbApi;
-    var omdbApiMock;
     var $q;
 
     beforeEach(module('movie-app'));
 
-    beforeEach(inject(function ($controller, $rootScope, _$compile_, _omdbApi_, _$q_) {
-        $scope = $rootScope.$new();
-        $compile = _$compile_;
+    beforeEach(inject(function ($controller, _omdbApi_, _$q_) {
         omdbApi = _omdbApi_;
         $q = _$q_;
 
