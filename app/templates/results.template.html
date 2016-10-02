@@ -8,7 +8,7 @@
     <accordian>
         <accordian-group ng-repeat="result in resultsCtrl.results" is-open="result.open">
             <accordian-heading>
-                {{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': result.open, ''fa-chevron-right': !result.open'}"></span>
+                {{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': result.open, 'fa-chevron-right': !result.open}"></span>
             </accordian-heading>
         </accordian-group>
     </accordian>

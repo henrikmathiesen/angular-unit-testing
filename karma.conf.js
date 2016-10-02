@@ -5,6 +5,7 @@ module.exports = function (config) {
         files: [
             './bld/lib.js',
             'node_modules/angular-mocks/angular-mocks.js',
+            './bld/template.js',
             './bld/app.js',
             './tst/**/*.js'
         ],
