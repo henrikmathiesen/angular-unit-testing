@@ -27,6 +27,12 @@ describe("results controller test", function () {
         }
     };
 
+    var responseNoHits = {
+        data: {
+            Error: true
+        }
+    };
+
     var $controller;
     var $q;
     var $rootScope;
@@ -42,6 +48,9 @@ describe("results controller test", function () {
         omdbApi = _omdbApi_;
         $rootScope = _$rootScope_;
         $location = _$location_;
+    }));
+
+    it("should load search results", function () {
 
         spyOn(omdbApi, 'search').and.callFake(function () {
             // return $q.defer().promise;
@@ -50,9 +59,7 @@ describe("results controller test", function () {
             deferred.resolve(response);
             return deferred.promise;
         });
-    }));
 
-    it("should load search results", function () {
         $location.search('q', 'star wars');
 
         resultsCtrl = $controller('resultsController');
@@ -63,7 +70,7 @@ describe("results controller test", function () {
         expect(resultsCtrl.results[1].Title).toBe(response.data.Search[1].Title);
         expect(resultsCtrl.results[2].Title).toBe(response.data.Search[2].Title);
         expect(omdbApi.search).toHaveBeenCalledWith('star wars');
-        
+
 
         // Our test failed
         // resultsCtrl.results set in a then callback of omdbApi.search is not working when tested
@@ -81,8 +88,36 @@ describe("results controller test", function () {
         // then we could just return $q.defer().promise; from mocked service
     });
 
-    it("", function(){
-        
+    it("should handle no search results", function () {
+        spyOn(omdbApi, 'search').and.callFake(function () {
+            var deferred = $q.defer();
+            deferred.resolve(responseNoHits);
+            return deferred.promise;
+        });
+
+        $location.search('q', 'mumbo jumbo');
+
+        resultsCtrl = $controller('resultsController');
+
+        $rootScope.$apply();
+
+        expect(resultsCtrl.results[0].noHits).toBe("No matches");
+    });
+
+    it("should handle errors", function () {
+        spyOn(omdbApi, 'search').and.callFake(function () {
+            var deferred = $q.defer();
+            deferred.reject();
+            return deferred.promise;
+        });
+
+        $location.search('q', 'star wars');
+
+        resultsCtrl = $controller('resultsController');
+
+        $rootScope.$apply();
+
+        expect(resultsCtrl.errorMessage).toBe("ERROR: something went wrong");
     });
 
 });

@@ -14,11 +14,11 @@ angular
                     resultsCtrl.results = response.data.Search;
                 }
                 else {
-                    console.log("no hits");
+                    resultsCtrl.results = [ { noHits: "No matches" } ];
                 }
             })
             .catch(function () {
-                console.error("ERROR: search movie");
+                resultsCtrl.errorMessage = "ERROR: something went wrong";
             });
 
     });
