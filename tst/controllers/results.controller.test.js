@@ -32,14 +32,16 @@ describe("results controller test", function () {
     var $rootScope;
     var omdbApi;
     var resultsCtrl;
+    var $location;
 
     beforeEach(module('movie-app'));
 
-    beforeEach(inject(function (_$controller_, _$q_, _omdbApi_, _$rootScope_) {
+    beforeEach(inject(function (_$controller_, _$q_, _omdbApi_, _$rootScope_, _$location_) {
         $controller = _$controller_;
         $q = _$q_;
         omdbApi = _omdbApi_;
         $rootScope = _$rootScope_;
+        $location = _$location_;
 
         spyOn(omdbApi, 'search').and.callFake(function () {
             // return $q.defer().promise;
@@ -51,6 +53,8 @@ describe("results controller test", function () {
     }));
 
     it("should load search results", function () {
+        $location.search('q', 'star wars');
+
         resultsCtrl = $controller('resultsController');
 
         $rootScope.$apply(); // Need to call this when mocking ajax calls ($digest might work also)
@@ -58,6 +62,7 @@ describe("results controller test", function () {
         expect(resultsCtrl.results[0].Title).toBe(response.data.Search[0].Title);
         expect(resultsCtrl.results[1].Title).toBe(response.data.Search[1].Title);
         expect(resultsCtrl.results[2].Title).toBe(response.data.Search[2].Title);
+        expect(omdbApi.search).toHaveBeenCalledWith('star wars');
         
 
         // Our test failed
@@ -74,6 +79,10 @@ describe("results controller test", function () {
 
         // If we where not interested in testing the response from ajax call but just wanted to get rid of test error 'unexpected GET request'
         // then we could just return $q.defer().promise; from mocked service
+    });
+
+    it("", function(){
+        
     });
 
 });

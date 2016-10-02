@@ -2,11 +2,13 @@
 
 angular
     .module('movie-app')
-    .controller('resultsController', function (omdbApi) {
+    .controller('resultsController', function (omdbApi, $location) {
 
         var resultsCtrl = this;
 
-        omdbApi.search('star wars')
+        var query = $location.search().q;
+
+        omdbApi.search(query)
             .then(function (response) {
                 if (!response.data.Error) {
                     resultsCtrl.results = response.data.Search;
