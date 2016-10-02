@@ -1,15 +1,15 @@
 <div>
-    <ol class="breadcrumb">
+    <ol class="breadcrumb au-breadcrumb">
         <li>
             <a href="#/">Home</a>
         </li>
         <li>Results</li>
     </ol>
-    <accordian>
-        <accordian-group ng-repeat="result in resultsCtrl.results" is-open="result.open">
-            <accordian-heading>
-                {{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': result.open, 'fa-chevron-right': !result.open}"></span>
-            </accordian-heading>
-        </accordian-group>
-    </accordian>
+    <uib-accordion>
+        <div uib-accordion-group class="panel-default au-panel" ng-repeat="result in resultsCtrl.results" is-open="status.open">
+            <uib-accordion-heading>
+                {{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></span>
+            </uib-accordion-heading>
+        </div>
+    </uib-accordion>
 </div>
