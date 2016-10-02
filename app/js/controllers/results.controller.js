@@ -5,8 +5,6 @@ angular
     .controller('resultsController', function (omdbApi) {
 
         var resultsCtrl = this;
-        
-
 
         omdbApi.search('star wars')
             .then(function (response) {
