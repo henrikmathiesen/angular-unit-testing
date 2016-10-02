@@ -5,7 +5,7 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ui.bootstrap'])
         
         $routeProvider
             .when('/results', {
-                templateUrl: '',
+                templateUrl: 'app/templates/results.template.html',
                 controller: 'resultsController as resultsCtrl'
             })
             .otherwise({ redirectTo: '/' });

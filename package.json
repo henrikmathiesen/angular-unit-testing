@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run copy-fonts",
-    "test": "npm run uglifyjs-app && karma start karma.conf.js",
-    "start": "npm run uglifyjs-lib && npm run eslint && npm run uglifyjs-app && npm run less-app-lib && concurrently \"npm run eslint-watch\" \"npm run uglifyjs-app-watch\" \"npm run watch-less-app\" \"npm run serve\"",
-    "prod": "npm run delete-build-files && npm run uglifyjs-lib-prod && npm run uglifyjs-app-prod && npm run less-prod",
+    "test": "npm run template-cache && npm run uglifyjs-app && karma start karma.conf.js",
+    "start": "npm run uglifyjs-lib && npm run eslint && npm run template-cache && npm run uglifyjs-app && npm run less-app-lib && concurrently \"npm run eslint-watch\" \"npm run template-cache-watch\" \"npm run uglifyjs-app-watch\" \"npm run watch-less-app\" \"npm run serve\"",
+    "prod": "npm run delete-build-files && npm run uglifyjs-lib-prod && npm run template-cache && npm run uglifyjs-app-prod && npm run less-prod",
     "serve": "http-server -p 1337",
     "delete-build-files": "del-cli bld/*.css bld/*.js bld/*.map",
     "copy-fonts": "copyfiles -u 1 \"node_modules/font-awesome/fonts/**/*\" bld",
@@ -18,8 +18,9 @@
     "eslint-watch": "onchange \"app/js/**/*.js\" -- npm run eslint",
     "less-app-lib": "lessc --source-map-map-inline --source-map-less-inline app/less/app.less bld/app.css && postcss -u autoprefixer --autoprefixer.browsers \"last 3 versions\" -r bld/app.css",
     "watch-less-app": "onchange \"app/less/**/*.less\" -- npm run less-app-lib",
+    "template-cache": "nghtml2js -f \"app/templates/*.html\" -o bld/template.js",
+    "template-cache-watch": "onchange \"app/templates/*.html\" -- npm run template-cache",
     "": "================================================================================================================================================================",
-    "ng-template-cache": "nghtml2js -f \"app/templates/*.html\" -o bld/template.js",
     "uglifyjs-lib-prod": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/angular/angular.js node_modules/angular-route/angular-route.js node_modules/angular-resource/angular-resource.js node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js -o bld/lib.js -c -m --comments",
     "uglifyjs-app-prod": "uglifyjs app/js/*.js app/js/services/*.js app/js/controllers/*.js -o bld/app.js",
     "less-prod": "lessc --clean-css app/less/app.less bld/app.css && postcss -u autoprefixer --autoprefixer.browsers \"last 3 versions\" -r bld/app.css"
