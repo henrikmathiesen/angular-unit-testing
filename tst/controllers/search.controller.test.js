@@ -28,4 +28,10 @@ describe("search controller test", function () {
         expect($location.url()).toBe('');
     });
 
+    it("should redirect after 1 second of keyboard inactivity", function(){
+        searchCtrl.query = 'star wars';
+        searchCtrl.keyup();
+        expect($location.url()).toBe('/results?q=star%20wars');
+    });
+
 });
