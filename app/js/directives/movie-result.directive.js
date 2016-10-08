@@ -12,7 +12,7 @@ angular
             template: [
                 '<div class="row">',
                     '<div class="col-sm-4">',
-                        '<img ng-src="result.Poster" alt="{{ result.Title }}" />',
+                        '<img ng-src="{{ result.Poster }}" alt="{{ result.Title }}" />',
                     '</div>',
                     '<div class="col-sm-8">',
                         '<h3>{{ result.Title }}</h3>',

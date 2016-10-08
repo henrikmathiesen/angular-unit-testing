@@ -24,14 +24,28 @@ describe("movie-result directive test", function () {
     it("should output movie result to expected HTML format", function () {
         var element;
         $rootScope.result = resultMock;
-        element = $compile('<movie-result result="result"></movie-result>')($rootScope); // This returns an jqLite element
+        element = $compile('<movie-result result="result"></movie-result>')($rootScope); // This returns an jqLite element / jquery element
         $rootScope.$digest();
 
         // See the actual directive element
         //console.log(element[0].outerHTML);
 
         // Since the div is replacing the wrapper directive element, this is the result of element.html()
-        expect(element.html()).toBe("Star Wars: Episode IV - A New Hope");
+        // when template was <div>{{ result.Title }}</div>
+        // expect(element.html()).toBe("Star Wars: Episode IV - A New Hope");
+
+        expect(element.find('.col-sm-4').length).toBe(1, "There should be one left column");
+        expect(element.find('.col-sm-8').length).toBe(1, "There should be one right column");
+
+        expect(element.find('.col-sm-4 img').attr('src')).toBe(resultMock.Poster);
+        expect(element.find('.col-sm-4 img').attr('alt')).toBe(resultMock.Title);
+
+        expect(element.find('.col-sm-8 h3').text()).toBe(resultMock.Title);
+        
+        expect(angular.element(element).find('.col-sm-8 p').eq(0).text()).toContain(resultMock.Director);
+        expect(angular.element(element).find('.col-sm-8 p').eq(1).text()).toContain(resultMock.Actors);
+        expect(angular.element(element).find('.col-sm-8 p').eq(2).text()).toContain(resultMock.Released);
+        expect(angular.element(element).find('.col-sm-8 p').eq(3).text()).toContain(resultMock.Genre);
     });
 
 });
