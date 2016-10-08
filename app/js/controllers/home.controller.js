@@ -12,7 +12,6 @@ angular
         var findMovie = function (id) {
             omdbApi.find(id)
                 .then(function (response) {
-                    console.log(response);
                     homeCtrl.result = response.data;
                 });
         };
