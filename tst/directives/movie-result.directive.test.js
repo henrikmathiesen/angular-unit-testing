@@ -48,6 +48,12 @@ describe("movie-result directive test", function () {
         expect(angular.element(element).find('.col-sm-8 p').eq(2).text()).toContain(resultMock.Released);
         expect(angular.element(element).find('.col-sm-8 p').eq(3).text()).toContain(resultMock.Genre);
         expect(angular.element(element).find('.col-sm-8 p').eq(4).text()).toContain(resultMock.Plot);
+
+        // utilities for checking scopes and performance, can also use these on $scope
+        console.log("==========================================");
+        console.log("Child scopes: " + $rootScope.$countChildScopes());
+        console.log("Watchers: " + $rootScope.$countWatchers());
+        console.log("==========================================");
     });
 
 });
