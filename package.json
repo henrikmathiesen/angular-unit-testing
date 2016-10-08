@@ -12,7 +12,7 @@
     "delete-build-files": "del-cli bld/*.css bld/*.js bld/*.map",
     "copy-fonts": "copyfiles -u 1 \"node_modules/font-awesome/fonts/**/*\" bld",
     "uglifyjs-lib": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/angular/angular.js node_modules/angular-route/angular-route.js node_modules/angular-resource/angular-resource.js node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js -o bld/lib.js --source-map bld/lib.js.map --source-map-url /bld/lib.js.map --source-map-include-sources",
-    "uglifyjs-app": "uglifyjs app/js/*.js app/js/services/*.js app/js/controllers/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
+    "uglifyjs-app": "uglifyjs app/js/*.js app/js/services/*.js app/js/controllers/*.js app/js/directives/*.js -o bld/app.js --source-map bld/app.js.map --source-map-url /bld/app.js.map --source-map-include-sources",
     "uglifyjs-app-watch": "onchange \"app/js/**/*.js\" -- npm run uglifyjs-app",
     "eslint": "eslint app/js/**/*.js",
     "eslint-watch": "onchange \"app/js/**/*.js\" -- npm run eslint",
@@ -22,7 +22,7 @@
     "template-cache-watch": "onchange \"app/templates/*.html\" -- npm run template-cache",
     "": "================================================================================================================================================================",
     "uglifyjs-lib-prod": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/angular/angular.js node_modules/angular-route/angular-route.js node_modules/angular-resource/angular-resource.js node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js -o bld/lib.js -c -m --comments",
-    "uglifyjs-app-prod": "uglifyjs app/js/*.js app/js/services/*.js app/js/controllers/*.js -o bld/app.js",
+    "uglifyjs-app-prod": "uglifyjs app/js/*.js app/js/services/*.js app/js/controllers/*.js app/js/directives/*.js -o bld/app.js",
     "less-prod": "lessc --clean-css app/less/app.less bld/app.css && postcss -u autoprefixer --autoprefixer.browsers \"last 3 versions\" -r bld/app.css"
   },
   "eslintConfig": {
