@@ -9,16 +9,19 @@ angular
         var timeout;
 
         searchCtrl.search = function () {
+            $timeout.cancel(timeout);
+
             if (searchCtrl.query) {
                 $location.path('/results').search('q', searchCtrl.query);
             }
         };
 
         searchCtrl.keyup = function () {
-            $timeout(searchCtrl.search, 1000);
+            timeout = $timeout(searchCtrl.search, 1000);
         }
 
-        // maybe should do it like this instead
-        // https://github.com/henrikmathiesen/angularArchitecture/blob/master/app/shared/debounce-input.directive.js
+        searchCtrl.keydown = function () {
+            $timeout.cancel(timeout);
+        };
 
     });

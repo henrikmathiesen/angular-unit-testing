@@ -30,12 +30,35 @@ describe("search controller test", function () {
         expect($location.url()).toBe('');
     });
 
-    it("should redirect after 1 second of keyboard inactivity", function(){
+    it("should redirect after 1 second of keyboard inactivity", function () {
         searchCtrl.query = 'star wars';
         searchCtrl.keyup();
-        $timeout.flush(1000);               // can set 1000 (like in the controller), to flush only that timeout, or no argument to flush all
-        $timeout.verifyNoPendingTasks();    // This lines gives a good error message if not flushed all timeouts
+
+        // can set 1000 (like in the controller), to flush only that timeout, or no argument to flush all
+        $timeout.flush(1000);
+
+        // This lines gives a good error message if not flushed all timeouts
+        expect($timeout.verifyNoPendingTasks).not.toThrow();
+
         expect($location.url()).toBe('/results?q=star%20wars');
+    });
+
+    it("should cancel timeout if key is pressed within the 1 second limit", function () {
+        searchCtrl.query = 'star wars';
+        searchCtrl.keyup();
+        searchCtrl.keydown();
+
+        // keydown cancels the timeout
+        expect($timeout.verifyNoPendingTasks).not.toThrow();
+    });
+
+    it("should cancel time out search", function () {
+        searchCtrl.query = 'star wars';
+        searchCtrl.keyup();
+        searchCtrl.search();
+
+        // search cancels the timeout
+        expect($timeout.verifyNoPendingTasks).not.toThrow();
     });
 
 });
