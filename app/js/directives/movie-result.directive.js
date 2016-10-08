@@ -20,6 +20,7 @@ angular
                         '<p><strong>Actors: </strong>{{ result.Actors }}</p>',
                         '<p><strong>Released: </strong>{{ result.Released }}</p>',
                         '<p><strong>Genre: </strong>{{ result.Genre }}</p>',
+                        '<p><strong>Plot: </strong>{{ result.Plot }}</p>',
                     '</div>',
                 '</div>'
             ].join('')

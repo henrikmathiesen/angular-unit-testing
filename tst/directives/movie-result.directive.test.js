@@ -8,7 +8,8 @@ describe("movie-result directive test", function () {
         Director: "George Lucas",
         Actors: "Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing",
         Released: "25 May 1997",
-        Genre: "Action, Adventure, Fantasy"
+        Genre: "Action, Adventure, Fantasy",
+        Plot: "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a wookiee and two droids to save the galaxy from the Empire's world-destroying battle-station, while also attempting to rescue Princess Leia from the evil Darth Vader."
     };
 
     var $compile;
@@ -46,6 +47,7 @@ describe("movie-result directive test", function () {
         expect(angular.element(element).find('.col-sm-8 p').eq(1).text()).toContain(resultMock.Actors);
         expect(angular.element(element).find('.col-sm-8 p').eq(2).text()).toContain(resultMock.Released);
         expect(angular.element(element).find('.col-sm-8 p').eq(3).text()).toContain(resultMock.Genre);
+        expect(angular.element(element).find('.col-sm-8 p').eq(4).text()).toContain(resultMock.Plot);
     });
 
 });
