@@ -2,8 +2,13 @@
 
 angular
     .module('movie-app')
-    .directive('movieResult', function(){
+    .directive('movieResult', function () {
         return {
-            template: '<div>Star Wars: Episode IV - A New Hope</div>'
+            restrict: 'E',
+            replace: true,
+            scope: {
+                result: '='
+            },
+            template: '<div>{{ result.Title }}</div>'
         }
     });
