@@ -6,11 +6,13 @@
         <li>Results</li>
     </ol>
     <uib-accordion>
-        <div uib-accordion-group class="panel-default au-panel" ng-repeat="result in resultsCtrl.results" is-open="status.open">
+        <div uib-accordion-group class="panel-default au-panel" ng-repeat="result in resultsCtrl.results" 
+            is-open="status.open"
+            ng-click="resultsCtrl.toggleAccordian(status.open, result.imdbID, $index)">
             <uib-accordion-heading>
                 {{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></span>
             </uib-accordion-heading>
-            <!--<movie-result result="result"></movie-result>-->
+            <movie-result result="result.movieDetails"></movie-result>
         </div>
     </uib-accordion>
 </div>
