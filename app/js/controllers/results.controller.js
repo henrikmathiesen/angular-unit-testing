@@ -12,6 +12,12 @@ angular
             resultsCtrl.errorMessage = "ERROR: something went wrong";
         };
 
+        var scrollToMovieId = function (imdbID) {
+            angular.element('html, body').animate({
+                scrollTop: angular.element('#movie-result-' + imdbID).offset().top
+            });
+        };
+
         omdbApi.search(query)
             .then(function (response) {
                 if (!response.data.Error) {
@@ -23,11 +29,12 @@ angular
             })
             .catch(errorHandler);
 
-        resultsCtrl.toggleAccordian = function (isOpen, id, index) {
+        resultsCtrl.toggleAccordian = function (isOpen, imdbID, index) {
             if (isOpen) {
-                omdbApi.find(id)
+                omdbApi.find(imdbID)
                     .then(function (response) {
                         resultsCtrl.results[index].movieDetails = response.data;
+                        scrollToMovieId(imdbID);
                     })
                     .catch(errorHandler);
             }
