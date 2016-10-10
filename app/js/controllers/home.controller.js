@@ -8,6 +8,7 @@ angular
         homeCtrl.result = {};
 
         var index = 0;
+        var interval;
 
         var findMovie = function (id) {
             omdbApi.find(id)
@@ -24,8 +25,10 @@ angular
 
                 findMovie(data[index]);
 
-                $interval(function () {
+                interval = $interval(function () {
                     // cycle through a movie every 5 seconds, repeat
+
+                    console.log("interval");
 
                     if (index < (data.length - 1)) {
                         index++;
