@@ -16,6 +16,7 @@ angular
                 });
         };
 
+        // We get back to this
         //PopularMovies.get()
          //   .then(function (data) {
 
