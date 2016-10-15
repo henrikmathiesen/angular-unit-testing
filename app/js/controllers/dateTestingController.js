@@ -27,7 +27,7 @@ angular
 
         
 
-        var d02 = new Date('2016-10-15 16:15:10');
+        var d02 = new Date('2016-10-15:16:15:10');
         console.log(d02);
         // We can construct dates by using strings
 
