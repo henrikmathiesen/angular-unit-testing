@@ -12,3 +12,5 @@ angular
             return value;
         }
     });
+
+    // Include moment.js
