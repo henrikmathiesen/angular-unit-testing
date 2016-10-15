@@ -33,5 +33,13 @@ angular
 
         var d03 = new Date('2016-10-15T16:15:10');
         console.log(d03);
+        // If we use this format, OBS T, we are using ISO time string, Z is default which means UTC
+        // In the console it is logged as Sat Oct 15 2016 18:15:10 GMT+0200 (Västeuropa, sommartid)
+        // since sweden is 2 hour ahead of UTC time (during summer time)
+
+        // The time zone offset is either -120 in the summer or -60 in the winter (UTC is -120 or -60 before sweden time)
+        var timeZoneOffSet = new Date().getTimezoneOffset() == -120 ? '02:00' : '01:00';
+        var d04 = new Date('2016-10-15T16:15:10+' + timeZoneOffSet);
+        console.log(d04);
 
     });
