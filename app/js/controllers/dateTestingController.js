@@ -30,6 +30,7 @@ angular
         var d02 = new Date('2016-10-15:16:15:10');
         console.log(d02);
         // We can construct dates by using strings
+        // Sat Oct 15 2016 16:15:10 GMT+0200 (Västeuropa, sommartid)
 
         var d03 = new Date('2016-10-15T16:15:10');
         console.log(d03);
@@ -41,5 +42,8 @@ angular
         var timeZoneOffSet = new Date().getTimezoneOffset() == -120 ? '02:00' : '01:00';
         var d04 = new Date('2016-10-15T16:15:10+' + timeZoneOffSet);
         console.log(d04);
+        // Here we specify the offset and the correct time is logged
+
+        // When specifying string dates like d02, this problem does not arrise
 
     });
