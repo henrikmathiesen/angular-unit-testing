@@ -28,8 +28,6 @@ angular
                 interval = $interval(function () {
                     // cycle through a movie every 5 seconds, repeat
 
-                    console.log("interval");
-
                     if (index < (data.length - 1)) {
                         index++;
                     }
