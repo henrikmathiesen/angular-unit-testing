@@ -18,12 +18,6 @@ describe("from-now filter test", function () {
         expect(fromNow('foo')).toBe("ERROR: value must be date object");
     });
 
-    it("should return the date", function () {
-        var date = new Date('2016-01-01');
-        
-        expect(fromNow(date)).toBe(date);
-    });
-
     // it("should return value of years ago for date object", function(){
 
     // });
