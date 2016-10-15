@@ -4,8 +4,8 @@ angular
     .module('movie-app')
     .filter('fromNowFilter', function () {
         return function (value) {
-            if(!value || !angular.isDate(value)) {
-                console.error("ERROR: value must be date object");
+            if(!value) {
+                console.error("ERROR: pass date object or date as string");
                 return "ERROR: value must be date object";
             }
             
