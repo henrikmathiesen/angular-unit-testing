@@ -4,8 +4,11 @@ angular
     .module('movie-app')
     .filter('fromNowFilter', function () {
         return function (value) {
-            if (!value) {
-                throw "date value can not be undefined";
+            if(!value || !angular.isDate(value)) {
+                console.error("ERROR: value must be date object");
+                return "ERROR: value must be date object";
             }
+            
+            return value;
         }
     });
