@@ -32,12 +32,12 @@ describe("from-now filter test", function () {
         expect(fromNow(released)).toBe("1 year ago");
     });
 
-    it("should handle possible time zone offsets", function () {
+    it("should handle possible time zone offsets (ISO string)", function () {
         var released = "2006-12-31T23:00:00";
         expect(fromNow(released)).toBe("10 years ago");
     });
 
-    it("should handle dates as ISO strings - 2", function () {
+    it("should handle dates as ISO strings with Z", function () {
         var released = "2006-12-31T23:00:00.545Z";
         expect(fromNow(released)).toBe("10 years ago");
     });
