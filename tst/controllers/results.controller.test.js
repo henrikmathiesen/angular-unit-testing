@@ -59,10 +59,6 @@ describe("results controller test", function () {
         $exceptionHandler = _$exceptionHandler_;
     }));
 
-    it("should be defined", function(){
-        expect(omdbApi).toBeDefined();
-    });
-
     it("should load search results", function () {
 
         spyOn(omdbApi, 'search').and.callFake(function () {
