@@ -42,7 +42,7 @@ angular
         var timeZoneOffSet = new Date().getTimezoneOffset() == -120 ? '02:00' : '01:00';
         var d04 = new Date('2016-10-15T16:15:10+' + timeZoneOffSet);
         console.log(d04);
-        // Here we specify the offset and the correct time is logged
+        // Here we specify the offset and the correct sweden time is logged
 
         // When specifying string dates like d02, this problem does not arrise
         // Although it is also an ISO time string (?)
