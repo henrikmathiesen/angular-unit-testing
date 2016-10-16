@@ -139,11 +139,12 @@ describe("results controller test", function () {
         // If we however change this to 'log'
         // we no longer rethrows the exception and the test above fails
         // The exception is cought and stored as a list internally
+        // This makes our test code easier
 
         resultsCtrl = $controller('resultsController');
         $rootScope.$apply();
 
-        expect($exceptionHandler.errors).toEqual(['Something went wrong!']);
+        expect($exceptionHandler.errors).toEqual([ ['Something went wrong!', 'Something went wrong with omdbApi'] ]);
 
     });
 

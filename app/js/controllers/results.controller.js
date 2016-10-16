@@ -12,7 +12,7 @@ angular
             //resultsCtrl.errorMessage = "ERROR: something went wrong";
             //throw "Something went wrong!";
             // This rethrows the error, logging it to console
-            $exceptionHandler(e);
+            $exceptionHandler(e, "Something went wrong with omdbApi");
         };
 
         var scrollToMovieId = function (imdbID) {
