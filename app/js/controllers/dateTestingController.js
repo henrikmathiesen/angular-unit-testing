@@ -45,6 +45,6 @@ angular
         // Here we specify the offset and the correct sweden time is logged
 
         // When specifying string dates like d02, this problem does not arrise
-        // Although it is also an ISO time string (?)
+        // Although it is also an ISO time string (a simplyfied ISO string)
 
     });
