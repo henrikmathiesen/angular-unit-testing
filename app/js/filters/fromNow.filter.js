@@ -7,21 +7,17 @@ angular
             if(!value) {
                 return "";
             }
-
-            // With ISO strings, we need to handle time zone offsets
-            if(value.indexOf('T') > -1) {
-                var timeZoneOffSet = new Date().getTimezoneOffset();
-                
-                if(value.indexOf('Z') > -1) {
-                    value = value.split('Z')[0];
-                }
-
-                value = value + timeZoneOffSet;
-            }
-
-            var year = new Date(value).getFullYear();
+            
             var currentYear = new Date().getFullYear();
-            var yearDiff = currentYear - year;
+            var compareDate = new Date(value);
+            
+            var compareDateMs = compareDate.getTime();
+            var timeZoneOffSetMs = compareDate.getTimezoneOffset() * 60 * 1000;
+
+            var compareDateLocalTimeZone = new Date(compareDateMs + timeZoneOffSetMs);
+            var compareDateLocalTimeZoneYear = compareDateLocalTimeZone.getFullYear();
+
+            var yearDiff = currentYear - compareDateLocalTimeZoneYear;
 
             return yearDiff == 1 ? "1 year ago" : yearDiff + " years ago"; 
         }
