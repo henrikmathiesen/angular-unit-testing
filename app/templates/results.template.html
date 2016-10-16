@@ -1,18 +1,21 @@
 <div>
-    <ol class="breadcrumb au-breadcrumb">
-        <li>
-            <a href="#/">Home</a>
-        </li>
-        <li>Results</li>
-    </ol>
-    <uib-accordion>
-        <div uib-accordion-group class="panel-default au-panel" ng-repeat="result in resultsCtrl.results" 
-            is-open="status.open"
-            ng-click="resultsCtrl.toggleAccordian(status.open, result.imdbID, $index)">
-            <uib-accordion-heading id="movie-result-{{result.imdbID}}">
-                {{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></span>
-            </uib-accordion-heading>
-            <movie-result result="result.movieDetails"></movie-result>
-        </div>
-    </uib-accordion>
+	<ol class="breadcrumb au-breadcrumb">
+		<li>
+			<a href="#/">Home</a>
+		</li>
+		<li>Results</li>
+	</ol>
+	<uib-accordion ng-show="resultsCtrl.results.length">
+		<div uib-accordion-group class="panel-default au-panel" ng-repeat="result in resultsCtrl.results" is-open="status.open" ng-click="resultsCtrl.toggleAccordian(status.open, result.imdbID, $index)">
+			<uib-accordion-heading id="movie-result-{{result.imdbID}}">
+				{{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></span>
+			</uib-accordion-heading>
+			<movie-result result="result.movieDetails"></movie-result>
+		</div>
+	</uib-accordion>
+	<div class="panel panel-default" ng-show="!resultsCtrl.results.length">
+		<div class="panel-body">
+			<div class="au-text-danger">No hits</div>
+		</div>
+	</div>
 </div>

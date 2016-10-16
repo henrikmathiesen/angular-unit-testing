@@ -10,6 +10,7 @@ angular
 
         var errorHandler = function () {
             resultsCtrl.errorMessage = "ERROR: something went wrong";
+            //throw "Something went wrong!";
         };
 
         var scrollToMovieId = function (imdbID) {
@@ -24,7 +25,8 @@ angular
                     resultsCtrl.results = response.data.Search;
                 }
                 else {
-                    resultsCtrl.results = [{ noHits: "No matches" }];
+                    // No hits
+                    resultsCtrl.results = [];
                 }
             })
             .catch(errorHandler);

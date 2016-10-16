@@ -101,7 +101,7 @@ describe("results controller test", function () {
 
         $rootScope.$apply();
 
-        expect(resultsCtrl.results[0].noHits).toBe("No matches");
+        expect(resultsCtrl.results.length).toBe(0);
     });
 
     it("should handle errors", function () {
