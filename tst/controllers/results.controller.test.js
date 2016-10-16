@@ -40,22 +40,28 @@ describe("results controller test", function () {
     var resultsCtrl;
     var $location;
     var $exceptionHandler;
+    var $log;
 
     beforeEach(module('movie-app'));
 
-    beforeEach(module(function($exceptionHandlerProvider) {
+    beforeEach(module(function ($exceptionHandlerProvider) {
         // This is unit test provider
         $exceptionHandlerProvider.mode('log'); // 'rethrow' (also logs, but we have to handle the exception in the test)
     }));
 
-    beforeEach(inject(function (_$controller_, _$q_, _omdbApi_, _$rootScope_, _$location_, _$exceptionHandler_) {
+    beforeEach(inject(function (_$controller_, _$q_, _omdbApi_, _$rootScope_, _$location_, _$exceptionHandler_, _$log_) {
         $controller = _$controller_;
         $q = _$q_;
         omdbApi = _omdbApi_;
         $rootScope = _$rootScope_;
         $location = _$location_;
+        $log = _$log_;
         $exceptionHandler = _$exceptionHandler_;
     }));
+
+    it("should be defined", function(){
+        expect(omdbApi).toBeDefined();
+    });
 
     it("should load search results", function () {
 
@@ -144,7 +150,7 @@ describe("results controller test", function () {
         resultsCtrl = $controller('resultsController');
         $rootScope.$apply();
 
-        expect($exceptionHandler.errors).toEqual([ ['Something went wrong!', 'Something went wrong with omdbApi'] ]);
+        expect($exceptionHandler.errors).toEqual([['Something went wrong!', 'Something went wrong with omdbApi']]);
 
     });
 

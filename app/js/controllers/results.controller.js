@@ -11,7 +11,9 @@ angular
         var errorHandler = function (e) {
             //resultsCtrl.errorMessage = "ERROR: something went wrong";
             //throw "Something went wrong!";
+            
             // This rethrows the error, logging it to console
+            // We have however overwritten the $exceptionHandler to do more, see services
             $exceptionHandler(e, "Something went wrong with omdbApi");
         };
 
