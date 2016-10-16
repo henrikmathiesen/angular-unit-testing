@@ -3,12 +3,12 @@
 angular
     .module('movie-app')
     .filter('fromNowFilter', function () {
-        return function (value) {
+        return function (value, baseDate) {
             if(!value) {
                 return "";
             }
             
-            var currentYear = new Date().getFullYear();
+            var currentYear = baseDate ? new Date(baseDate).getFullYear() : new Date().getFullYear();
             var compareDate = new Date(value);
             
             var compareDateMs = compareDate.getTime();
