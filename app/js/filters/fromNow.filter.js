@@ -19,6 +19,6 @@ angular
 
             var yearDiff = currentYear - compareDateLocalTimeZoneYear;
 
-            return yearDiff == 1 ? "1 year ago" : yearDiff + " years ago"; 
+            return yearDiff == 1 ? "1 year ago" : yearDiff + " years ago";
         }
     });
