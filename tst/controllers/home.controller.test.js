@@ -31,6 +31,7 @@ describe("home controller test", function () {
 
     var $controller;
     var $interval;
+    var $log;
     var homeCtrl;
 
     beforeEach(module('movie-app'));
@@ -66,9 +67,10 @@ describe("home controller test", function () {
         });
     }));
 
-    beforeEach(inject(function (_$controller_, _$interval_, _$rootScope_, _omdbApi_, _PopularMovies_) {
+    beforeEach(inject(function (_$controller_, _$interval_, _$log_, _$rootScope_, _omdbApi_, _PopularMovies_) {
         $controller = _$controller_;
         $interval = _$interval_;
+        $log = _$log_;
 
         homeCtrl = $controller('homeController', { $interval: _$interval_, omdbApi: _omdbApi_, PopularMovies: _PopularMovies_ });
         _$rootScope_.$apply();

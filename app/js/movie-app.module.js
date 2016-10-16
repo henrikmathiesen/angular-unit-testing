@@ -1,8 +1,11 @@
 /// <reference path="../../typings/index.d.ts" />
 
 angular.module('movie-app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'templates'])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $logProvider) {
         
+        // This disabled $log to console for .debug() (default false)
+        $logProvider.debugEnabled(true);
+
         $routeProvider
             .when('/', {
                 templateUrl: 'app/templates/home.template.html',

@@ -2,8 +2,14 @@
 
 angular
     .module('movie-app')
-    .controller('homeController', function ($interval, omdbApi, PopularMovies) {
+    .controller('homeController', function ($log, $interval, omdbApi, PopularMovies) {
         var homeCtrl = this;
+
+        $log.log("standard log");
+        $log.info("info log");
+        $log.error("error log");
+        $log.warn("warning log");
+        $log.debug("debug log");
 
         homeCtrl.result = {};
 
