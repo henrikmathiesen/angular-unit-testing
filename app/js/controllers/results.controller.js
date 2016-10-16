@@ -2,15 +2,17 @@
 
 angular
     .module('movie-app')
-    .controller('resultsController', function (omdbApi, $location) {
+    .controller('resultsController', function ($exceptionHandler, $location, omdbApi) {
 
         var resultsCtrl = this;
 
         var query = $location.search().q;
 
-        var errorHandler = function () {
+        var errorHandler = function (e) {
             //resultsCtrl.errorMessage = "ERROR: something went wrong";
-            throw "Something went wrong!";
+            //throw "Something went wrong!";
+            // This rethrows the error, logging it to console
+            $exceptionHandler(e);
         };
 
         var scrollToMovieId = function (imdbID) {

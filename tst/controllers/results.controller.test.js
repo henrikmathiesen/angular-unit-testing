@@ -39,15 +39,22 @@ describe("results controller test", function () {
     var omdbApi;
     var resultsCtrl;
     var $location;
+    var $exceptionHandler;
 
     beforeEach(module('movie-app'));
 
-    beforeEach(inject(function (_$controller_, _$q_, _omdbApi_, _$rootScope_, _$location_) {
+    beforeEach(module(function($exceptionHandlerProvider) {
+        // This is unit test provider
+        $exceptionHandlerProvider.mode('log'); // 'rethrow' (also logs, but we have to handle the exception in the test)
+    }));
+
+    beforeEach(inject(function (_$controller_, _$q_, _omdbApi_, _$rootScope_, _$location_, _$exceptionHandler_) {
         $controller = _$controller_;
         $q = _$q_;
         omdbApi = _omdbApi_;
         $rootScope = _$rootScope_;
         $location = _$location_;
+        $exceptionHandler = _$exceptionHandler_;
     }));
 
     it("should load search results", function () {
@@ -107,7 +114,7 @@ describe("results controller test", function () {
     it("should handle errors", function () {
         spyOn(omdbApi, 'search').and.callFake(function () {
             var deferred = $q.defer();
-            deferred.reject();
+            deferred.reject("Something went wrong!");
             return deferred.promise;
         });
 
@@ -119,10 +126,24 @@ describe("results controller test", function () {
 
         //expect(resultsCtrl.errorMessage).toBe("ERROR: something went wrong");
 
-        expect(function(){
-            resultsCtrl = $controller('resultsController');
-            $rootScope.$apply();
-        }).toThrow("Something went wrong!");
+        // react to throw "Something went wrong!";
+        // or $exceptionHandler(e); where e is message in .reject()
+        // expect(function(){
+        //     resultsCtrl = $controller('resultsController');
+        //     $rootScope.$apply();
+        // }).toThrow("Something went wrong!");
+
+        // $exceptionHandlerProvider.mode('rethrow');
+        // is the default mode (see beforeEach)
+
+        // If we however change this to 'log'
+        // we no longer rethrows the exception and the test above fails
+        // The exception is cought and stored as a list internally
+
+        resultsCtrl = $controller('resultsController');
+        $rootScope.$apply();
+
+        expect($exceptionHandler.errors).toEqual(['Something went wrong!']);
 
     });
 
