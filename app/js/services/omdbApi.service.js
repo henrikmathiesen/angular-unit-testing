@@ -5,7 +5,7 @@ angular
     .factory('omdbApi', function ($http) {
         var factory = {};
 
-        var baseUrl = 'http://www.omdbapi.commm/?'
+        var baseUrl = 'http://www.omdbapi.com/?'
 
         factory.search = function (query) {
             // teacher does this encodeURIComponent(query);
