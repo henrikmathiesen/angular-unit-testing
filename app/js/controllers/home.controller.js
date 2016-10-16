@@ -9,7 +9,8 @@ angular
         $log.info("info log");
         $log.error("error log");
         $log.warn("warning log");
-        $log.debug("debug log");
+        $log.debug("debug log 1", "param 1");
+        $log.debug("debug log 2");
 
         homeCtrl.result = {};
 

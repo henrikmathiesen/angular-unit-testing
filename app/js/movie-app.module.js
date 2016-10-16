@@ -4,7 +4,7 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ui.bootstrap', 'templates
     .config(function ($routeProvider, $logProvider) {
         
         // This disabled $log to console for .debug() (default false)
-        $logProvider.debugEnabled(true);
+        $logProvider.debugEnabled(false);
 
         $routeProvider
             .when('/', {

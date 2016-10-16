@@ -36,6 +36,13 @@ describe("home controller test", function () {
 
     beforeEach(module('movie-app'));
 
+    // Dont need this since we are using movie-app module and it has set it to true
+    // But suppose we toggle it there, based on 'debug/isProduction' mode
+    // Then we can override it here, so it always works in out tests
+    beforeEach(module(function ($logProvider) {
+        $logProvider.debugEnabled(true);
+    }));
+
     beforeEach(inject(function (_$q_, _PopularMovies_) {
         spyOn(_PopularMovies_, 'get').and.callFake(function () {
             var deferred = _$q_.defer();
@@ -90,6 +97,28 @@ describe("home controller test", function () {
 
         $interval.flush(5000);
         expect(homeCtrl.result.Title).toBe(response[0].data.Title, "should return to the first movie");
+
+    });
+
+    it("should log messages", function () {
+        console.log(angular.mock.dump($log.log.logs));
+        console.log(angular.mock.dump($log.info.logs));
+        console.log(angular.mock.dump($log.error.logs));
+        console.log(angular.mock.dump($log.warn.logs));
+        console.log(angular.mock.dump($log.debug.logs));
+
+        expect($log.debug.logs[0]).toEqual(["debug log 1", "param 1"]);
+        expect($log.debug.logs[1]).toEqual(["debug log 2"]);
+
+        $log.reset(); // a method on the mock version of $log
+
+        console.log(angular.mock.dump($log.log.logs));
+        console.log(angular.mock.dump($log.info.logs));
+        console.log(angular.mock.dump($log.error.logs));
+        console.log(angular.mock.dump($log.warn.logs));
+        console.log(angular.mock.dump($log.debug.logs));
+
+        $log.assertEmpty(); // another method on the mock version of $log
     });
 
 });
