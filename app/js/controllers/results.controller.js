@@ -9,8 +9,8 @@ angular
         var query = $location.search().q;
 
         var errorHandler = function () {
-            resultsCtrl.errorMessage = "ERROR: something went wrong";
-            //throw "Something went wrong!";
+            //resultsCtrl.errorMessage = "ERROR: something went wrong";
+            throw "Something went wrong!";
         };
 
         var scrollToMovieId = function (imdbID) {

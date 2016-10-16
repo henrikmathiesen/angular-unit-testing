@@ -113,11 +113,17 @@ describe("results controller test", function () {
 
         $location.search('q', 'star wars');
 
-        resultsCtrl = $controller('resultsController');
+        //resultsCtrl = $controller('resultsController');
 
-        $rootScope.$apply();
+        //$rootScope.$apply();
 
-        expect(resultsCtrl.errorMessage).toBe("ERROR: something went wrong");
+        //expect(resultsCtrl.errorMessage).toBe("ERROR: something went wrong");
+
+        expect(function(){
+            resultsCtrl = $controller('resultsController');
+            $rootScope.$apply();
+        }).toThrow("Something went wrong!");
+
     });
 
 });
