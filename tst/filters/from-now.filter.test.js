@@ -36,11 +36,11 @@ describe("from-now filter test", function () {
         var released = "2006-12-31T23:00:00";
         expect(fromNow(released)).toBe("10 years ago");
 
-        // Without special logic in filter 'released' would be converted to swedish time,
+        // Without special logic in the filter, 'released' would be converted to swedish time,
         // which is 1-2 hours (depending on winter/summer time) ahead of UTC time
         // That would have moved the year into 2007 and the test would fail: expected 9 to be 10
 
-        // But the logic in the filter removes the timeZone offset, "stamping" released to be a local date 
+        // But the logic in the filter removes the timeZone offset, "stamping" released to be a local date
     });
 
     it("should handle dates as ISO strings with Z", function () {
