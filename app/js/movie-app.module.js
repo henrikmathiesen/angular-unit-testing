@@ -21,10 +21,12 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap
 
     /*
         About ngMockE2E
+        - Back end less development
         - Include in module dependencies
         - Reference the script file, 'node_modules/angular-mocks/angular-mocks.js', else error
         - Handle unexpected GET request
 
         This module gives access to $httpBackend, which in this context is the in browser variant of the unit test variant 
+        _$httpBackend_ which is injectable (when node_modules/angular-mocks/angular-mocks.js is in karma.conf.js of course) 
 
      */
