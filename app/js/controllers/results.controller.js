@@ -13,7 +13,7 @@ angular
             //throw "Something went wrong!";
             
             // This rethrows the error, logging it to console
-            // We have however overwritten the $exceptionHandler to do more, see services
+            // We could have however (if not for failing unit tests) overwritten the $exceptionHandler to do more, see services
             $exceptionHandler(e, "Something went wrong with omdbApi");
         };
 
