@@ -26,8 +26,9 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap
         - Reference the script file, 'node_modules/angular-mocks/angular-mocks.js', else error
         - Handle unexpected GET request
         - Can return mock for all http verbs
-        - Can pass through requests to real back end
+        - Can pass through requests to become real request
         - Dont need to flush()
+        - We can NOT use ngMockE2E:s $httpBackend in unit tests 
 
         This module gives access to $httpBackend, which in this context is the in browser variant of the unit test variant 
         _$httpBackend_ which is injectable (when node_modules/angular-mocks/angular-mocks.js is in karma.conf.js of course) 
