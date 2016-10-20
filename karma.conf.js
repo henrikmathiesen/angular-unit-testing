@@ -4,7 +4,7 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
         files: [
             './bld/lib.js',
-            'node_modules/angular-mocks/angular-mocks.js',
+            //'node_modules/angular-mocks/angular-mocks.js', already included in lib.js
             './bld/template.js',
             './bld/app.js',
             './tst/**/*.js'
