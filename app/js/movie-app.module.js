@@ -16,6 +16,14 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap
                 controller: 'resultsController as resultsCtrl'
             })
             .otherwise({ redirectTo: '/' });
+    })
+    .run(function($httpBackend){
+
+        // We mock ajax calls here
+
+        // This is essential, else normal ajax calls breaks
+        $httpBackend.whenGET(/^\w+.*/).passThrough();
+
     });
 
 
