@@ -30,7 +30,7 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap
 
 
     /*
-        About ngMockE2E
+        About ngMockE2E module
         - Back end less development
         - Includes only one service: $httpBackend
         - Include in module dependencies
