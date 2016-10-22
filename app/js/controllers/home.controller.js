@@ -24,25 +24,23 @@ angular
                 });
         };
 
+        // When using array as a response (in mock $httpBackend), we have to use $resource query method
+        PopularMovies.query(function (data) {
+            findMovie(data[index]);
 
-        PopularMovies.get()
-            .then(function (data) {
+            interval = $interval(function () {
+                // cycle through a movie every 5 seconds, repeat
+
+                if (index < (data.length - 1)) {
+                    index++;
+                }
+                else {
+                    index = 0;
+                }
 
                 findMovie(data[index]);
 
-                interval = $interval(function () {
-                    // cycle through a movie every 5 seconds, repeat
-
-                    if (index < (data.length - 1)) {
-                        index++;
-                    }
-                    else {
-                        index = 0;
-                    }
-
-                    findMovie(data[index]);
-
-                }, 5000);
-            });
+            }, 5000);
+        })
 
     });

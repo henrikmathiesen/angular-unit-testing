@@ -2,7 +2,7 @@
 
 angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap', 'templates'])
     .config(function ($routeProvider, $logProvider) {
-        
+
         // This disabled $log to console for .debug() (default false)
         $logProvider.debugEnabled(false);
 
@@ -17,12 +17,18 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap
             })
             .otherwise({ redirectTo: '/' });
     })
-    .run(function($httpBackend){
+    .run(function ($httpBackend) {
 
         // We mock ajax calls here
 
         var data = ['tt0076759', 'tt0080684', 'tt0086190'];
-        var header = {};
+        var headers = {
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        $httpBackend.whenGET(function (s) {
+            return (s.indexOf('popular') !== -1);
+        }).respond(200, data, headers);
 
         // This is essential, else normal ajax calls breaks
         $httpBackend.whenGET(/^\w+.*/).passThrough();
