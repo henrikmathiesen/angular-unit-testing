@@ -32,6 +32,7 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap
     /*
         About ngMockE2E
         - Back end less development
+        - Includes only one service: $httpBackend
         - Include in module dependencies
         - Reference the script file, 'node_modules/angular-mocks/angular-mocks.js', else error
         - Handle unexpected GET request
