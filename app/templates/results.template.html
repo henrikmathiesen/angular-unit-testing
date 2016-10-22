@@ -10,7 +10,7 @@
 			<uib-accordion-heading id="movie-result-{{result.imdbID}}">
 				{{ result.Title }} <span class="pull-right fa" ng-class="{'fa-chevron-down': status.open, 'fa-chevron-right': !status.open}"></span>
 			</uib-accordion-heading>
-			<movie-result result="result.movieDetails"></movie-result>
+			<movie-result result="result.movieDetails" ng-show="result.movieDetails"></movie-result>
 		</div>
 	</uib-accordion>
 	<div class="panel panel-default" ng-show="!resultsCtrl.results.length">
