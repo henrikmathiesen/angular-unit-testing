@@ -46,7 +46,7 @@ describe("results controller test", function () {
 
     beforeEach(module(function ($exceptionHandlerProvider) {
         // This is unit test provider
-        $exceptionHandlerProvider.mode('log'); // 'rethrow' (also logs, but we have to handle the exception in the test)
+        $exceptionHandlerProvider.mode('log'); // 'rethrow' is default, it also logs, but we have to handle the exception in the test
     }));
 
     beforeEach(inject(function (_$controller_, _$q_, _omdbApi_, _$rootScope_, _$location_, _$exceptionHandler_, _$log_) {

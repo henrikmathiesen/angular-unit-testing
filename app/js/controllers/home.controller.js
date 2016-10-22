@@ -2,7 +2,7 @@
 
 angular
     .module('movie-app')
-    .controller('homeController', function ($log, $interval, omdbApi, PopularMovies) {
+    .controller('homeController', function ($log, $interval, $exceptionHandler, omdbApi, PopularMovies) {
         var homeCtrl = this;
 
         $log.log("standard log");
@@ -17,6 +17,10 @@ angular
         var index = 0;
         var interval;
 
+        var errorHandler = function (e) {
+            $exceptionHandler(e, "Something went wrong with omdbApi");
+        }
+
         var findMovie = function (id) {
             omdbApi.find(id)
                 .then(function (response) {
@@ -28,7 +32,8 @@ angular
                         homeCtrl.result = null;
                     }
 
-                });
+                })
+                .catch(errorHandler);
         };
 
         // When using array as a response (in mock $httpBackend), we have to use $resource query method
