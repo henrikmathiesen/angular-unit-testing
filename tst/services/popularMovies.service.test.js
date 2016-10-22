@@ -7,19 +7,20 @@ describe("popularMovies service test", function () {
 
 
     beforeEach(function () {
-        angular.module('app', ['ngResource']);
 
-        module('app');
+        // We need to mock a module here, we can NOT include movie-app module, since it depends on ngMockE2E
+        // It seems that ngMockE2E interferes with mocked ajax calls in unit tests
 
-        angular.mock.module(function ($provide) {
-            $provide.factory('PopularMovies', function ($resource) {
+        angular.module('app', ['ngResource'])
+            .factory('PopularMovies', function ($resource) {
                 return $resource('popular/:id', { id: '@id' }, {
                     update: {
                         method: 'PUT'
                     }
                 });
             });
-        });
+
+        module('app');
     });
 
     beforeEach(inject(function (_PopularMovies_, _$httpBackend_) {
