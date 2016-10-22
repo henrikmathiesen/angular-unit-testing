@@ -5,7 +5,22 @@ describe("popularMovies service test", function () {
     var PopularMovies;
     var $httpBackend;
 
-    beforeEach(module('movie-app'));
+
+    beforeEach(function () {
+        angular.module('app', ['ngResource']);
+
+        module('app');
+
+        angular.mock.module(function ($provide) {
+            $provide.factory('PopularMovies', function ($resource) {
+                return $resource('popular/:id', { id: '@id' }, {
+                    update: {
+                        method: 'PUT'
+                    }
+                });
+            });
+        });
+    });
 
     beforeEach(inject(function (_PopularMovies_, _$httpBackend_) {
         PopularMovies = _PopularMovies_;
