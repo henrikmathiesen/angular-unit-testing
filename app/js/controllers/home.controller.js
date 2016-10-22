@@ -20,7 +20,14 @@ angular
         var findMovie = function (id) {
             omdbApi.find(id)
                 .then(function (response) {
-                    homeCtrl.result = response.data;
+                    if(!response.data.Error) {
+                        homeCtrl.result = response.data;
+                    }
+                    else {
+                        // No match
+                        homeCtrl.result = null;
+                    }
+
                 });
         };
 
