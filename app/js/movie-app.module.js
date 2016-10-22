@@ -21,6 +21,8 @@ angular.module('movie-app', ['ngRoute', 'ngResource', 'ngMockE2E', 'ui.bootstrap
 
         // We mock ajax calls here
 
+        var data = ['tt0076759', 'tt0080684', 'tt0086190'];
+
         // This is essential, else normal ajax calls breaks
         $httpBackend.whenGET(/^\w+.*/).passThrough();
 

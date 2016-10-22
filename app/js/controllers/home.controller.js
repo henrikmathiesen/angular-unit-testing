@@ -24,11 +24,9 @@ angular
                 });
         };
 
-        // We get back to this
-        //PopularMovies.get()
-         //   .then(function (data) {
 
-                var data = ['tt0076759', 'tt0080684', 'tt0086190'];
+        PopularMovies.get()
+            .then(function (data) {
 
                 findMovie(data[index]);
 
@@ -43,8 +41,8 @@ angular
                     }
 
                     findMovie(data[index]);
-                    
+
                 }, 5000);
-                
-          //  });
+            });
+
     });
