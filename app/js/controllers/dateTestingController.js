@@ -26,7 +26,7 @@ angular
         // It means that the time is measured in UTC
 
         
-
+        // OBS: Invalid date in Firefox and IE, dont use this format, use a proper ISO string
         var d02 = new Date('2016-10-15:16:15:10');
         console.log(d02);
         // We can construct dates by using strings
