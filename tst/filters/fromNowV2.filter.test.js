@@ -14,12 +14,12 @@ describe("from-now no conversion filter test", function () {
         expect(fromNow()).toBe("");
     });
 
-    it("should handle give correct from year ago -- A", function () {
-        var released = "2006-12-31T23:00:00+02:00";
-        var comparedTo = "2016-12-31T23:00:00+02:00";
+    // it("should handle give correct from year ago -- A", function () {
+    //     var released = "2006-12-31T23:00:00+02:00";
+    //     var comparedTo = "2016-12-31T23:00:00+02:00";
 
-        expect(fromNow(released, comparedTo)).toBe("10 years ago");
-    });
+    //     expect(fromNow(released, comparedTo)).toBe("10 years ago");
+    // });
 
     // This test failes when filter does not convert to UTC time, because the time at release time was GMT+01:00
     // it("should handle give correct from year ago -- B", function () {
@@ -52,5 +52,13 @@ describe("from-now no conversion filter test", function () {
 
     //     expect(fromNow(released, comparedTo)).toBe("9 years ago");
     // });
+
+    // This test passes when converting to UTC time, since we are expecting it to be pushed back 2 hours
+    it("should handle give correct from year ago -- H", function () {
+        var released = "2007-01-01T00:00:00+02:00";
+        var comparedTo = "2016-12-01T23:00:00+02:00";
+
+        expect(fromNow(released, comparedTo)).toBe("10 years ago");
+    });
 
 });

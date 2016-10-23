@@ -9,8 +9,8 @@ angular
                 return "";
             }
             
-            var currentYear = baseDate ? new Date(baseDate).getFullYear() : new Date().getFullYear();
-            var compareDate = new Date(value).getFullYear();
+            var currentYear = baseDate ? new Date(baseDate).getUTCFullYear() : new Date().getUTCFullYear();
+            var compareDate = new Date(value).getUTCFullYear();
             
             var yearDiff = currentYear - compareDate;
 
