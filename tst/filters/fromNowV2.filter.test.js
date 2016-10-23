@@ -81,7 +81,8 @@ describe("from-now no conversion filter test", function () {
     // ============================================================================================================================================================================================================
 
     //
-    // These tests passes, but it is a little more brittle when dates are in this format(?)
+    // These tests FAILS when converting to UTC since they are created as local date and converted to UTC (and dates are being moved back 1-2 hours, depending on if it was summer/winter time at the time)
+    // These tests PASS when NOT converting to UTC since they are then created as local dates, with correct time zone info(?) (dates are not being moved)
 
     it("should return value of years ago for date close to a new year -- A", function () {
         var released = "31 Dec 2006";
