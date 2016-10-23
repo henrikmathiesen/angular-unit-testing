@@ -57,16 +57,16 @@ describe("from-now no conversion filter test", function () {
     //
     // SUCCESS WHEN CONVERTING TO UTC -- expect it to be converted in the test
 
-    // This test passes when converting to UTC time, since we are expecting it to be pushed back 2 hours
+    // This test passes when converting to UTC time in filter, since we are expecting it to be pushed back 1 hour to UTC time, pushing it to 2006
     // it("should handle give correct from year ago -- H", function () {
-    //     var released = "2007-01-01T00:00:00+02:00";
-    //     var comparedTo = "2016-12-01T23:00:00+02:00";
+    //     var released = "2007-01-01T00:00:00+01:00";
+    //     var comparedTo = "2016-12-01T23:00:00+01:00";
 
     //     expect(fromNow(released, comparedTo)).toBe("10 years ago");
     // });
 
     //
-    // SUCCESS WHEN NOT CONVERTING TO UTC -- SUPPLY THE CORRECT TIME ZONE INFO
+    // SUCCESS WHEN NOT CONVERTING TO UTC -- expect it to NOT be converted in the test -- OBS: SUPPLY THE CORRECT TIME ZONE INFO
 
     // This test passes when not converting to UTC time, since we procide +01:00 which is the correct swedish UTC offset at winter time (2007-01 is winter time)
     it("should handle give correct from year ago -- I", function () {
