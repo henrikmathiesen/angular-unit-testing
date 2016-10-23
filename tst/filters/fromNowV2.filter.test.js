@@ -76,4 +76,25 @@ describe("from-now no conversion filter test", function () {
         expect(fromNow(released, comparedTo)).toBe("9 years ago");
     });
 
+    //
+    // These tests passes, but it is a little more brittle when dates are in this format(?)
+
+    it("should return value of years ago for date close to a new year -- A", function () {
+        var released = "31 Dec 2006";
+        var comparedTo = "1 Jan 2016";
+        expect(fromNow(released, comparedTo)).toBe("10 years ago");
+    });
+
+    it("should return value of years ago for date close to a new year -- B", function () {
+        var released = "1 Jan 2006";
+        var comparedTo = "31 Dec 2016";
+        expect(fromNow(released, comparedTo)).toBe("10 years ago");
+    });
+
+    it("should return value of 1 year ago singular form", function () {
+        var released = "05 May 2015";
+        var comparedTo = "1 Jan 2016";
+        expect(fromNow(released, comparedTo)).toBe("1 year ago");
+    });
+
 });
