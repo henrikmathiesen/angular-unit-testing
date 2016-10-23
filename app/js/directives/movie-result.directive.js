@@ -18,7 +18,7 @@ angular
                         '<h3>{{ result.Title }}</h3>',
                         '<p><strong>Director: </strong>{{ result.Director }}</p>',
                         '<p><strong>Actors: </strong>{{ result.Actors }}</p>',
-                        '<p><strong>Released: </strong>{{ result.Released }} ({{ result.Released | fromNowFilter }})</p>',
+                        '<p><strong>Released: </strong>{{ result.Released }} ({{ result.Released | fromNowFilterV2 }})</p>',
                         '<p><strong>Genre: </strong>{{ result.Genre }}</p>',
                         '<p><strong>Plot: </strong>{{ result.Plot }}</p>',
                     '</div>',
