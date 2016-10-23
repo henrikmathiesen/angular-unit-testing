@@ -47,4 +47,11 @@ angular
         // When specifying string dates like d02, this problem does not arrise
         // Although it is also an ISO time string (a simplyfied ISO string)
 
+
+        var d05 = new Date();
+        console.log(d05);
+        console.log(d05.toUTCString());
+        console.log(d05.toISOString());
+        console.log(d05.toTimeString());
+
     });
