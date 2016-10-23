@@ -7,7 +7,7 @@ describe("from-now no conversion filter test", function () {
     beforeEach(module('movie-app'));
 
     beforeEach(inject(function (_$filter_) {
-        fromNow = _$filter_('fromNowFilterNoConversion');
+        fromNow = _$filter_('fromNowFilterV2');
     }));
 
     it("should return an empty string if no value", function () {
@@ -32,7 +32,7 @@ describe("from-now no conversion filter test", function () {
         var released = "2006-12-31T23:00:00";
         var comparedTo = "2016-12-24T23:00:00+02:00";
 
-        expect(fromNow(released, comparedTo)).not.toBe("10 years ago");
+        expect(fromNow(released, comparedTo)).toBe("10 years ago");
     });
 
 });
