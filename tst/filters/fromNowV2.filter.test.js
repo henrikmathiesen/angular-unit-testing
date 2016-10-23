@@ -102,4 +102,46 @@ describe("from-now no conversion filter test", function () {
         expect(fromNow(released, comparedTo)).toBe("1 year ago");
     });
 
+
+    //
+    // #################################################################################################################################################################################################################
+    //
+    // The above tests works on a machine in sweden executing the code
+    // There could however be problems on a machine in another country that has a different time zone
+    // For example "2016-12-31T23:00:00+01:00" could be moved forward to 2017 in a country several hours ahead of UTC
+    // Iam not 100% sure about this, when using ISO format
+
+    it("should use teachers example", function () {
+        var currentDate = new Date('2014-12-31T23:00:00Z'); // adding +01:00 will make isNewYear false, because it is then specified as a date 1 hour ahead of UTC, so it is NOT pushed forward
+        var newYear = 2015;
+        var isNewYear = currentDate.getFullYear() == newYear;
+
+        expect(isNewYear).toBe(true);
+
+        // This date is moved forward here in sweden, since we are ahead of UTC, making the test true
+        // The date currentDate is actualy 2015 in sweden, local time
+        // This behavior makes sense
+        // Also, just calling new Date(); creates a local time that would be +1 or +2 (depening on winter/summer time) ahead of UTC
+
+    });
+
+    // Passing 0 means that local time is the same as UTC time
+    // Teacher is not providing +hh:mm in the date string, he is using Z all the time
+
+    it("should use angulars tz date, so dates are not moved based on local time zone -- A", function(){
+        var currentDate = angular.mock.TzDate(0, '2014-12-31T23:00:00Z');
+        var newYear = 2015;
+        var isNewYear = currentDate.getFullYear() == newYear;
+
+        expect(isNewYear).toBe(false);
+    });
+
+    it("should use angulars tz date, so dates are not moved based on local time zone -- C", function(){
+        var currentDate = angular.mock.TzDate(0, '2015-01-01T00:00:00Z');
+        var newYear = 2015;
+        var isNewYear = currentDate.getFullYear() == newYear;
+
+        expect(isNewYear).toBe(true);
+    });
+
 });
