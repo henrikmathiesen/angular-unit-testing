@@ -144,4 +144,22 @@ describe("from-now no conversion filter test", function () {
         expect(isNewYear).toBe(true);
     });
 
+
+
+
+
+
+    //
+    // RECAP
+    //
+    
+    // new Date(); creates a local time, a happy new year app that compares it to next year will return happy new year at the correct time for all users in all time zones
+    
+    // new Date('2010-03-01T15:00:00Z'); when executing in a browser in a time zone, will make a local time for that UTC time, here in sweden the time would be 16:00, since sweden was 1 hour ahead of GMT then (winter time)
+    // new Date('2010-08-01T15:00:00Z'); when executing in a browser in a time zone, will make a local time for that UTC time, here in sweden the time would be 17:00, since sweden was 2 hour ahead of GMT then (summer time)
+    
+    // new Date('2010-08-01T15:00:00+02:00'); when executing in a browser in a time zone, will make a local time for that +02:00 offsetted UTC time, here in sweden the time would be 15:00, since sweden offset at the time matches the UTC offset
+
+    // new Date('2010-08-01T15:00:00+01:00'); when executing in a browser in a time zone, will make a local time for that +01:00 offsetted UTC time, here in sweden the time would be 16:00, since sweden offset at the time (summer time) is +02:00 ahead of UTC time
+
 });
