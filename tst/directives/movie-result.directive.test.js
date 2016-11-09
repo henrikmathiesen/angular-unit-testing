@@ -23,31 +23,30 @@ describe("movie-result directive test", function () {
     }));
 
     it("should output movie result to expected HTML format", function () {
-        var element;
         $rootScope.result = resultMock;
-        element = $compile('<movie-result result="result"></movie-result>')($rootScope); // This returns an jqLite element / jquery element
+        var $element = $compile('<movie-result result="result"></movie-result>')($rootScope); // This returns an jqLite $element / jquery $element
         $rootScope.$digest();
 
-        // See the actual directive element
-        //console.log(element[0].outerHTML);
+        // See the actual directive $element
+        //console.log($element[0].outerHTML);
 
-        // Since the div is replacing the wrapper directive element, this is the result of element.html()
+        // Since the div is replacing the wrapper directive $element, this is the result of $element.html()
         // when template was <div>{{ result.Title }}</div>
-        // expect(element.html()).toBe("Star Wars: Episode IV - A New Hope");
+        // expect($element.html()).toBe("Star Wars: Episode IV - A New Hope");
 
-        expect(element.find('.col-sm-4').length).toBe(1, "There should be one left column");
-        expect(element.find('.col-sm-8').length).toBe(1, "There should be one right column");
+        expect($element.find('.col-sm-4').length).toBe(1, "There should be one left column");
+        expect($element.find('.col-sm-8').length).toBe(1, "There should be one right column");
 
-        expect(element.find('.col-sm-4 img').attr('src')).toBe(resultMock.Poster);
-        expect(element.find('.col-sm-4 img').attr('alt')).toBe(resultMock.Title);
+        expect($element.find('.col-sm-4 img').attr('src')).toBe(resultMock.Poster);
+        expect($element.find('.col-sm-4 img').attr('alt')).toBe(resultMock.Title);
 
-        expect(element.find('.col-sm-8 h3').text()).toBe(resultMock.Title);
-        
-        expect(angular.element(element).find('.col-sm-8 p').eq(0).text()).toContain(resultMock.Director);
-        expect(angular.element(element).find('.col-sm-8 p').eq(1).text()).toContain(resultMock.Actors);
-        expect(angular.element(element).find('.col-sm-8 p').eq(2).text()).toContain(resultMock.Released);
-        expect(angular.element(element).find('.col-sm-8 p').eq(3).text()).toContain(resultMock.Genre);
-        expect(angular.element(element).find('.col-sm-8 p').eq(4).text()).toContain(resultMock.Plot);
+        expect($element.find('.col-sm-8 h3').text()).toBe(resultMock.Title);
+
+        expect($element.find('.col-sm-8 p').eq(0).text()).toContain(resultMock.Director);
+        expect($element.find('.col-sm-8 p').eq(1).text()).toContain(resultMock.Actors);
+        expect($element.find('.col-sm-8 p').eq(2).text()).toContain(resultMock.Released);
+        expect($element.find('.col-sm-8 p').eq(3).text()).toContain(resultMock.Genre);
+        expect($element.find('.col-sm-8 p').eq(4).text()).toContain(resultMock.Plot);
 
         // utilities for checking scopes and performance, can also use these on $scope
         console.log("==========================================");
@@ -55,5 +54,15 @@ describe("movie-result directive test", function () {
         console.log("Watchers: " + $rootScope.$countWatchers());
         console.log("==========================================");
     });
+
+    // it("should know how to brute force the scope properties", function () {
+    //     $rootScope.result = resultMock;
+    //     var $element = $compile('<movie-result result="result"></movie-result>')($rootScope);
+    //     $rootScope.$digest();
+
+    //     var isolateScope = $Element.isolateScope();
+    //     isolateScope.model = editOverlatelseGranskning;
+    //     scope.$apply();
+    // });
 
 });
