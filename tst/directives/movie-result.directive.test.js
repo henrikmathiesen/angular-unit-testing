@@ -55,14 +55,18 @@ describe("movie-result directive test", function () {
         console.log("==========================================");
     });
 
-    // it("should know how to brute force the scope properties", function () {
-    //     $rootScope.result = resultMock;
-    //     var $element = $compile('<movie-result result="result"></movie-result>')($rootScope);
-    //     $rootScope.$digest();
+    it("should know how to brute force the scope properties", function () {
+        $rootScope.result = resultMock;
+        var $element = $compile('<movie-result result="result"></movie-result>')($rootScope);
+        $rootScope.$digest();
 
-    //     var isolateScope = $Element.isolateScope();
-    //     isolateScope.model = editOverlatelseGranskning;
-    //     scope.$apply();
-    // });
+        expect($element.find('.col-sm-8 h3').text()).toBe("Star Wars: Episode IV - A New Hope", "The Title set from mocked data");
+
+        var isolateScope = $element.isolateScope();
+        isolateScope.result.Title = "A New Title";
+        $rootScope.$apply();
+
+        expect($element.find('.col-sm-8 h3').text()).toBe("A New Title", "The Title brute forced in later in the test");
+    });
 
 });
