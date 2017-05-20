@@ -102,6 +102,12 @@ describe("from-now no conversion filter test", function () {
         expect(fromNow(released, comparedTo)).toBe("1 year ago");
     });
 
+    it("should handle new date", function () { 
+        var released = new Date('2015-05-05');
+        var comparedTo = new Date('2016-01-01');
+        expect(fromNow(released, comparedTo)).toBe("1 year ago");
+    });
+
 
     //
     // #################################################################################################################################################################################################################
@@ -128,7 +134,7 @@ describe("from-now no conversion filter test", function () {
     // Passing 0 means that local time is the same as UTC time
     // Teacher is not providing +hh:mm in the date string, he is using Z all the time
 
-    it("should use angulars tz date, so dates are not moved based on local time zone -- A", function(){
+    it("should use angulars tz date, so dates are not moved based on local time zone -- A", function () {
         var currentDate = angular.mock.TzDate(0, '2014-12-31T23:00:00Z');
         var newYear = 2015;
         var isNewYear = currentDate.getFullYear() == newYear;
@@ -136,7 +142,7 @@ describe("from-now no conversion filter test", function () {
         expect(isNewYear).toBe(false);
     });
 
-    it("should use angulars tz date, so dates are not moved based on local time zone -- C", function(){
+    it("should use angulars tz date, so dates are not moved based on local time zone -- C", function () {
         var currentDate = angular.mock.TzDate(0, '2015-01-01T00:00:00Z');
         var newYear = 2015;
         var isNewYear = currentDate.getFullYear() == newYear;
@@ -152,12 +158,12 @@ describe("from-now no conversion filter test", function () {
     //
     // RECAP
     //
-    
+
     // new Date(); creates a local time, a happy new year app that compares it to next year will return happy new year at the correct time for all users in all time zones
-    
+
     // new Date('2010-03-01T15:00:00Z'); when executing in a browser in a time zone, will make a local time for that UTC time, here in sweden the time would be 16:00, since sweden was 1 hour ahead of GMT then (winter time)
     // new Date('2010-08-01T15:00:00Z'); when executing in a browser in a time zone, will make a local time for that UTC time, here in sweden the time would be 17:00, since sweden was 2 hour ahead of GMT then (summer time)
-    
+
     // new Date('2010-08-01T15:00:00+02:00'); when executing in a browser in a time zone, will make a local time for that +02:00 offsetted UTC time, here in sweden the time would be 15:00, since sweden offset at the time matches the UTC offset
 
     // new Date('2010-08-01T15:00:00+01:00'); when executing in a browser in a time zone, will make a local time for that +01:00 offsetted UTC time, here in sweden the time would be 16:00, since sweden offset at the time (summer time) is +02:00 ahead of UTC time

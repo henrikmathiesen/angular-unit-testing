@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 
+// Expects a date object, or ISO string with correct time zone offset
 
 angular
     .module('movie-app')
